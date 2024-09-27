@@ -3,7 +3,7 @@ import base64
 import argparse
 import sys
 
-def xor_bytes(key: bytes, input: bytes, fill: int, cycle_key: bool = False) -> bytes:
+def xor_bytes(key: bytes, input: bytes, fill: int = 0, cycle_key: bool = False) -> bytes:
     zipped = zip(itertools.cycle(key), input) if cycle_key else itertools.zip_longest(key, input, fillvalue=fill)
     return bytes(a ^ b for a,b in zipped)
 
